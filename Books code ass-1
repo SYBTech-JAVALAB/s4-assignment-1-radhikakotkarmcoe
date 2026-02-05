@@ -1,0 +1,63 @@
+class Book {
+String title;
+String author;
+double price;
+String isbn;
+int stock;
+Book(String t, String a, double p, String i, int s) {
+title = t;
+
+author = a;
+price = p;
+isbn = i;
+stock = s;
+}
+void displayInfo() {
+System.out.println(&quot;Title : &quot; + title);
+System.out.println(&quot;Author : &quot; + author);
+System.out.println(&quot;Price : &quot; + price);
+System.out.println(&quot;ISBN : &quot; + isbn);
+System.out.println(&quot;Stock : &quot; + stock);
+System.out.println(&quot;---------------------------------------&quot;);
+}
+void applyDiscount(double percent) {
+price = price - (price * percent / 100);
+}
+void addStock(int newStock) {
+stock += newStock;
+}
+boolean isAvailable() {
+return stock &gt; 0;
+}
+}
+public class OnlineBookStore {
+public static void main(String[] args) {
+Book book1 = new Book(
+&quot;The Alchemist&quot;,
+&quot;Paulo Coelho&quot;,
+399.0,
+&quot;ISBN001&quot;,
+10
+);
+Book book2 = new Book(
+&quot;Java Programming&quot;,
+&quot;Herbert Schildt&quot;,
+699.0,
+&quot;ISBN002&quot;,
+0
+);
+
+System.out.println(&quot;Initial Book Details:&quot;);
+book1.displayInfo();
+book2.displayInfo();
+book1.applyDiscount(10);
+System.out.println(&quot;After 10% Discount on Book 1:&quot;);
+book1.displayInfo();
+book2.addStock(5);
+System.out.println(&quot;After Adding Stock to Book 2:&quot;);
+book2.displayInfo();
+System.out.println(&quot;Availability Status:&quot;);
+System.out.println(book1.title + &quot; Available: &quot; + book1.isAvailable());
+System.out.println(book2.title + &quot; Available: &quot; + book2.isAvailable());
+}
+}
